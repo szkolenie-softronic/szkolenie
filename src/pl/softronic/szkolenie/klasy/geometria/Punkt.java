@@ -6,7 +6,7 @@ import java.util.Locale;
  *  */
 public class Punkt {
 
-	double x = 667;
+	double x;
 	double y;
 	
 
@@ -15,6 +15,10 @@ public class Punkt {
 		this.y = y;
 	}
 
+	
+	public Punkt() {
+		
+	}
 
 
 	/** Wypisuje informacje o punkcie na ekran 
