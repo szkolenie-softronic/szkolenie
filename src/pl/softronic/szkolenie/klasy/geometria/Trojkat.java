@@ -15,7 +15,16 @@ public class Trojkat {
 		this.c = c;
 	}
 	
-	
+	public double getObwod(){
+		double result =0;
+		Odcinek ab = new Odcinek(a, b);
+		Odcinek ac = new Odcinek(a, c);
+		Odcinek bc = new Odcinek(b, c);
+		result += ab.getDlugosc();
+		result += ac.getDlugosc();
+		result += bc.getDlugosc();
+		return result;
+	}
 	
 
 	public Punkt getA() {
@@ -44,7 +53,7 @@ public class Trojkat {
 
 	@Override
 	public String toString() {
-		return "Trojkat [a=" + a + ", b=" + b + ", c=" + c + "]";
+		return "Trojkat [\n\ta = " + a + ", \n\tb = " + b + ", \n\tc = " + c + "\n]";
 	}
 	
 	

@@ -18,7 +18,7 @@ public class Odcinek {
 //		b = new Punkt(bx, by);
 //	}
 	
-	public double dlugosc(){
+	public double getDlugosc(){
 		double result = Math.sqrt( (a.getX()-b.getX())*(a.getX()-b.getX()) + (a.getY()-b.getY())*(a.getY()-b.getY()) );
 		return result;
 	}
