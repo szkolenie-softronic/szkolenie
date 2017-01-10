@@ -13,13 +13,13 @@ public class Odcinek {
 		this.b = b;
 	}
 	
-	public Odcinek(double ax, double ay, double bx, double by) {
-		a = new Punkt(ax, ay);
-		b = new Punkt(bx, by);
-	}
+//	public Odcinek(double ax, double ay, double bx, double by) {
+//		a = new Punkt(ax, ay);
+//		b = new Punkt(bx, by);
+//	}
 	
 	public double dlugosc(){
-		double result = Math.sqrt( (a.x-b.x)*(a.x-b.x) + (a.y-b.y)*(a.y-b.y) );
+		double result = Math.sqrt( (a.getX()-b.getX())*(a.getX()-b.getX()) + (a.getY()-b.getY())*(a.getY()-b.getY()) );
 		return result;
 	}
 	

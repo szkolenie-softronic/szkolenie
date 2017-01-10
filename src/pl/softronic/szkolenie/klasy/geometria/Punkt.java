@@ -6,20 +6,13 @@ import java.util.Locale;
  *  */
 public class Punkt {
 
-	double x;
-	double y;
-	
+	private double x;
+	private double y;
 
 	public Punkt(double x, double y) {
 		this.x = x;
 		this.y = y;
 	}
-
-	
-	public Punkt() {
-		
-	}
-
 
 	/** Wypisuje informacje o punkcie na ekran 
 	 *  */
@@ -27,5 +20,23 @@ public class Punkt {
 		System.out.printf(new Locale("PL"), 
 				"Punkt p(%7.2f;%7.2f)", x, y);
 	}
+
+	public double getX() {
+		return x;
+	}
+
+	public void setX(double x) {
+		this.x = x;
+	}
+
+	public double getY() {
+		return y;
+	}
+
+	public void setY(double y) {
+		this.y = y;
+	}
+	
+	
 	
 }
