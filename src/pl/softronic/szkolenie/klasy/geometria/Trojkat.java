@@ -26,6 +26,16 @@ public class Trojkat {
 		return result;
 	}
 	
+	public double getPole(){
+		double result =0;
+		result += a.getX() * (b.getY() - c.getY());
+		result += b.getX() * (c.getY() - a.getY());
+		result += c.getX() * (a.getY() - b.getY());
+		result /= 2;
+		result = Math.abs(result);
+		return result;
+	}
+	
 
 	public Punkt getA() {
 		return a;
