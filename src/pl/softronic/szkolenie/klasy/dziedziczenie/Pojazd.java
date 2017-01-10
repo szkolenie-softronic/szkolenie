@@ -16,5 +16,12 @@ public class Pojazd extends ObiektFizyczny {
 	public String getNazwa() {
 		return nazwa;
 	}
+	
+	
+	@Override
+	public String toString(){
+		return    "nazwa:   " + nazwa + "\n"
+				+ super.toString();
+	}
 
 }
