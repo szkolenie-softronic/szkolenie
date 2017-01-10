@@ -1,10 +1,8 @@
 package pl.softronic.szkolenie.klasy.geometria;
 
-import java.util.Locale;
-
 /** Opis punktu
  *  */
-public class Punkt {
+public class Punkt{
 
 	private double x;
 	private double y;
