@@ -6,11 +6,18 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		ObiektFizyczny f = new Pojazd("£otr 1", new Punkt(100, -15634562346245635645624d));
-		String nazwa = f.getNazwa();
-		System.out.println(nazwa);
+		Wektor w = new Wektor(10, 00);
+
+		System.out.println("Wartoœci inicjalne");
+		System.out.println("dl  " + w.getDlugosc());
+		System.out.println("k¹t " + w.getKat() * 180/Math.PI );
 		
-		Wektor w = new Wektor(10, 33);
+		w.setKat(45  *  Math.PI/180);
+		System.out.println("Po zmianie k¹ta");
+		
+		System.out.println("dl  " + w.getDlugosc());
+		System.out.println("k¹t " + w.getKat() * 180/Math.PI );
+		System.out.println("Rad " + w.getKat() );
 		System.out.println(w);
 	}
 
