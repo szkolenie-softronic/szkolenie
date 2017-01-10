@@ -6,7 +6,11 @@ public class Wektor extends Punkt {
 
 	public Wektor(double x, double y) {
 		super(x, y);
-		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Wektor [" + super.toString() + "]";
 	}
 
 	
