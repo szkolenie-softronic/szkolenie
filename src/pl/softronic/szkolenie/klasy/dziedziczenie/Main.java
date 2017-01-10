@@ -6,23 +6,26 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Samochod zabawka = new Samochod("zabawka", new Punkt(100, 0));
-		zabawka.setPredkosc(new Wektor(10, 0));
-		zabawka.setPrzyspieszenie(new Wektor(0, 0));
-		zabawka.setSkret(1 * Math.PI/180);
+		Samochod a = new Samochod("szybki", new Punkt(0, 0));
+		a.setPredkosc(new Wektor(100, 0));
+		
+		Samochod b = new Samochod("wolny", new Punkt(0, 0));
+		b.setPrzyspieszenie(new Wektor(4, 0));
 		
 		System.out.println("Pozycja startowa");
-		System.out.println(zabawka);
+		System.out.println(a);
+		System.out.println(b);
 		
-		for(int t=0; t<100; t++){
-			zabawka.krok();
-		}
+		int t=0;
+		do {
+			a.krok();
+			b.krok();
+			t++;
+		} while( b.getPozycja().getX() <= a.getPozycja().getX() );
 		
-		System.out.println("Pozycja koñcowa");
-		System.out.println(zabawka);
-		
-		System.out.println("k¹t prêdkoœci: "
-				+ zabawka.getPredkosc().getKat() * 180/Math.PI );
+		System.out.println("Pozycja koñcowa   t="+t);
+		System.out.println(a);
+		System.out.println(b);
 		
 	}
 
