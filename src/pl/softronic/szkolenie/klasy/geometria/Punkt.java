@@ -14,13 +14,6 @@ public class Punkt {
 		this.y = y;
 	}
 
-	/** Wypisuje informacje o punkcie na ekran 
-	 *  */
-	public void pisz(){
-		System.out.printf(new Locale("PL"), 
-				"Punkt p(%7.2f;%7.2f)", x, y);
-	}
-
 	public double getX() {
 		return x;
 	}
@@ -35,6 +28,11 @@ public class Punkt {
 
 	public void setY(double y) {
 		this.y = y;
+	}
+
+	@Override
+	public String toString() {
+		return "Punkt [x=" + x + ", y=" + y + "]";
 	}
 	
 	

@@ -6,21 +6,22 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Punkt o = new Punkt(0,0);
-		Random rand = new Random();
-		
-		int x = 0;
-		for(int i=0; i<1000000; i++){
-			Punkt r = new Punkt(rand.nextDouble(),rand.nextDouble());
-			Odcinek odcinek = new Odcinek(o, r);
+		//Punkt o = new Punkt(0,0);
+		Object o = new Punkt(0,0);
+		pisz(o);
 
-			double dl = odcinek.dlugosc() ;
-			if(dl<1){
-				x++;
-			}
-		}
-		
-		System.out.println("x = " + 4*x/1000000d);
+	}
+	
+	static void pisz(String s){
+		System.out.println(s);
+	}
+	
+	static void pisz(Object obj){
+		pisz(obj.toString());
+	}
+	
+	static void pisz(Punkt p){
+		System.out.println("to jest punkt");
 	}
 
 }
