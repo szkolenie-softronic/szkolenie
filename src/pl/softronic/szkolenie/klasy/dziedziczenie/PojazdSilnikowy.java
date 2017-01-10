@@ -10,6 +10,13 @@ public class PojazdSilnikowy extends Pojazd {
 		super(nazwa, pozycja);
 		przyspieszenie = new Wektor(0, 0);
 	}
+	
+	@Override
+	public void krok(){
+		getPredkosc().dodaj(przyspieszenie);
+		super.krok();
+	}
+	
 
 	public Wektor getPrzyspieszenie() {
 		return przyspieszenie;

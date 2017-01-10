@@ -6,14 +6,16 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Pojazd zabawka = new PojazdSilnikowy("zabawka", new Punkt(100, 0));
+		PojazdSilnikowy zabawka = new PojazdSilnikowy("zabawka", new Punkt(100, 0));
 		zabawka.setPredkosc(new Wektor(10, 0));
+		zabawka.setPrzyspieszenie(new Wektor(-1, 0));
 		
 		System.out.println("Pozycja startowa");
 		System.out.println(zabawka);
 		
-		zabawka.krok();
-		
+		for(int t=0; t<100; t++){
+			zabawka.krok();
+		}
 		System.out.println("Pozycja koñcowa");
 		System.out.println(zabawka);
 		
