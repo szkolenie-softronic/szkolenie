@@ -5,7 +5,7 @@ import pl.softronic.szkolenie.klasy.geometria.Punkt;
 public class Samochod extends PojazdSilnikowy {
 
 	private double skret;
-	
+
 	public Samochod(String nazwa, Punkt pozycja) {
 		super(nazwa, pozycja);
 		skret = 0;

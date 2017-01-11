@@ -5,27 +5,31 @@ import pl.softronic.szkolenie.klasy.geometria.Punkt;
 public class Main {
 
 	public static void main(String[] args) {
+	
 		
-		Samochod a = new Samochod("szybki", new Punkt(0, 0));
-		a.setPredkosc(new Wektor(100, 0));
+		Object a = new PojazdSilnikowy("szybki", new Punkt(0, 0));
 		
-		Samochod b = new Samochod("wolny", new Punkt(0, 0));
-		b.setPrzyspieszenie(new Wektor(4, 0));
+		coTo(a);
 		
-		System.out.println("Pozycja startowa");
-		System.out.println(a);
-		System.out.println(b);
 		
-		int t=0;
-		do {
-			a.krok();
-			b.krok();
-			t++;
-		} while( b.getPozycja().getX() <= a.getPozycja().getX() );
-		
-		System.out.println("Pozycja koñcowa   t="+t);
-		System.out.println(a);
-		System.out.println(b);
+	}
+	
+	public static void coTo(Object jakisObiekt){
+		if(jakisObiekt instanceof Object){
+			System.out.println("jest to Object");
+		}
+		if(jakisObiekt instanceof ObiektFizyczny){
+			System.out.println("jest to ObiektFizyczny");
+		}
+		if(jakisObiekt instanceof Pojazd){
+			System.out.println("jest to Pojazd");
+		}
+		if(jakisObiekt instanceof PojazdSilnikowy){
+			System.out.println("jest to PojazdSilnikowy");
+			if(jakisObiekt instanceof Samochod){
+				System.out.println("jest to Samochod");
+			}
+		}
 		
 	}
 
