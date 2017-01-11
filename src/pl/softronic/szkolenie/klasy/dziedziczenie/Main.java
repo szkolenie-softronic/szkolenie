@@ -5,32 +5,32 @@ import pl.softronic.szkolenie.klasy.geometria.Punkt;
 public class Main {
 
 	public static void main(String[] args) {
-	
+
+		ObiektFizyczny[] tab = new ObiektFizyczny[3];
+		tab[0] = new Samochod("car", new Punkt(10, 23));
+		tab[1] = new Pojazd("zabawka", new Punkt(30, 12));
+		tab[2] = new PojazdSilnikowy("robot", new Punkt(15, 11));
 		
-		Object a = new PojazdSilnikowy("szybki", new Punkt(0, 0));
+		tab[0].setPredkosc(new Wektor(-1, -2.3));
+		tab[1].setPredkosc(new Wektor(-3, -1.2));
+		tab[2].setPredkosc(new Wektor(-1.5, -1.1));
 		
-		coTo(a);
-		
-		
-	}
-	
-	public static void coTo(Object jakisObiekt){
-		if(jakisObiekt instanceof Object){
-			System.out.println("jest to Object");
+		if(tab[0] instanceof Pojazd){
+			((Samochod)tab[0]).setSkret(Math.PI / 30);
 		}
-		if(jakisObiekt instanceof ObiektFizyczny){
-			System.out.println("jest to ObiektFizyczny");
+		if(tab[2] instanceof PojazdSilnikowy){
+			((PojazdSilnikowy)tab[2]).setPrzyspieszenie(new Wektor(0.1, 0));
 		}
-		if(jakisObiekt instanceof Pojazd){
-			System.out.println("jest to Pojazd");
-		}
-		if(jakisObiekt instanceof PojazdSilnikowy){
-			System.out.println("jest to PojazdSilnikowy");
-			if(jakisObiekt instanceof Samochod){
-				System.out.println("jest to Samochod");
+		
+		for(ObiektFizyczny o : tab){
+			for(int i=0; i<10; i++){
+				o.krok();
 			}
 		}
-		
+		for(ObiektFizyczny o : tab){
+			System.out.println(o);
+		}
 	}
+
 
 }

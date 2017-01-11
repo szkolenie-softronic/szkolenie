@@ -10,6 +10,9 @@ public class Wektor extends Punkt {
 	}
 	
 	public void dodaj(Wektor w){
+		if(w == null){
+			return;
+		}
 		setX(  w.getX() + getX()  );
 		setY(  w.getY() + getY()  );
 	}

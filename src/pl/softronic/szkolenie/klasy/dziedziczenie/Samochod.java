@@ -35,7 +35,7 @@ public class Samochod extends PojazdSilnikowy {
 	@Override
 	public String toString() {
 		return super.toString() + "\n"
-				+"skrêt:   " + skret;
+				+"skrêt:   " + skret + "\n";
 	}
 
 }

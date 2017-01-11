@@ -13,7 +13,9 @@ public class PojazdSilnikowy extends Pojazd {
 	
 	@Override
 	public void krok(){
-		getPredkosc().dodaj(przyspieszenie);
+		if(przyspieszenie!=null){
+			getPredkosc().dodaj(przyspieszenie);
+		}
 		super.krok();
 	}
 	
