@@ -21,6 +21,18 @@ public enum Kolor {
 		this.b =  b;
 	}
 	
+	public String getHex(){
+		String result = "#";
+		int[] t = new int[]{r , g , b};
+		for(int i : t){
+			if(i < 16){
+				result += "0";
+			}
+			result += Integer.toHexString(i);
+		}
+		return result;
+	}
+	
 	public String getNazwa(){
 		String name = name();
 		String n = name.substring(1);

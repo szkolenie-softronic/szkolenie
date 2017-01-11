@@ -8,6 +8,8 @@ public class Main {
 		
 		System.out.println("RGB = " + k.getR() + ", " + k.getG() + ", " + k.getB());
 		
+		System.out.println("hex = "+k.getHex());
+		
 //		for(Kolor k : Kolor.values()){
 //			System.out.println( k.getNazwa() );
 //		}
