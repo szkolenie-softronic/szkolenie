@@ -10,7 +10,13 @@ public class Samochod extends PojazdSilnikowy {
 		super(nazwa, pozycja);
 		skret = 0;
 	}
-	
+
+	public Samochod(String nazwa, Punkt pozycja, Wektor przyspieszenie) {
+		super(nazwa, pozycja, przyspieszenie);
+	}
+
+
+
 	@Override
 	public void krok(){
 		obroc(   getPredkosc()         );	
