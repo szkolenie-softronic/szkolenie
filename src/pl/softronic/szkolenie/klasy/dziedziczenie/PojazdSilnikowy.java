@@ -2,7 +2,7 @@ package pl.softronic.szkolenie.klasy.dziedziczenie;
 
 import pl.softronic.szkolenie.klasy.geometria.Punkt;
 
-public class PojazdSilnikowy extends Pojazd {
+public class PojazdSilnikowy extends Pojazd implements Przyspieszalny {
 	
 	private Wektor przyspieszenie;
 
@@ -32,6 +32,12 @@ public class PojazdSilnikowy extends Pojazd {
 	public String toString() {
 		return super.toString()
 				+"a:       " + przyspieszenie;
+	}
+
+	@Override
+	public void przyspiesz(double x) {
+		System.out.println("Pojazd silnikowy chcemy przyspieszyæ o: "+x);
+		
 	}
 
 	

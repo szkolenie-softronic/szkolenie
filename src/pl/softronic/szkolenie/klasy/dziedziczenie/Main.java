@@ -11,25 +11,24 @@ public class Main {
 		tab[1] = new Pojazd("zabawka", new Punkt(30, 12));
 		tab[2] = new PojazdSilnikowy("robot", new Punkt(15, 11));
 		
-		tab[0].setPredkosc(new Wektor(-1, -2.3));
-		tab[1].setPredkosc(new Wektor(-3, -1.2));
-		tab[2].setPredkosc(new Wektor(-1.5, -1.1));
-		
-		if(tab[0] instanceof Pojazd){
-			((Samochod)tab[0]).setSkret(Math.PI / 30);
-		}
-		if(tab[2] instanceof PojazdSilnikowy){
-			((PojazdSilnikowy)tab[2]).setPrzyspieszenie(new Wektor(0.1, 0));
-		}
-		
-		for(ObiektFizyczny o : tab){
-			for(int i=0; i<10; i++){
-				o.krok();
+		for(Object o : tab){
+			System.out.println("Obiekt klasy " + o.getClass().getSimpleName());
+			if(o instanceof Przyspieszalny){
+				System.out.println("   Jest przyspieszalny.");
+				
+				Przyspieszalny p = (Przyspieszalny)o;
+				p.przyspiesz(100);
+				
 			}
 		}
-		for(ObiektFizyczny o : tab){
-			System.out.println(o);
-		}
+		
+//		Przyspieszalny p = new Rakieta();
+//		p.przyspiesz(1);
+//		
+//		p = (Samochod)tab[0];
+//		p.przyspiesz(1);
+		
+		
 	}
 
 
