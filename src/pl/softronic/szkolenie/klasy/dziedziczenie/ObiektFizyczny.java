@@ -2,7 +2,7 @@ package pl.softronic.szkolenie.klasy.dziedziczenie;
 
 import pl.softronic.szkolenie.klasy.geometria.Punkt;
 
-public abstract class ObiektFizyczny {
+public abstract class ObiektFizyczny implements Comparable<ObiektFizyczny>{
 	
 	private Wektor pozycja;
 	private Wektor predkosc;
@@ -39,6 +39,13 @@ public abstract class ObiektFizyczny {
 	public String toString(){
 		return    "pos:     " + pozycja + "\n"
 				+ "v:       " + predkosc + "\n";
+	}
+	
+	@Override
+	public int compareTo(ObiektFizyczny b){
+		System.out.print(".");
+		return getNazwa().toLowerCase()
+				.compareTo(b.getNazwa().toLowerCase());
 	}
 	
 }

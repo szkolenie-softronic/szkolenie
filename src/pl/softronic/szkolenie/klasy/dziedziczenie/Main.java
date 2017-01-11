@@ -20,15 +20,9 @@ public class Main {
 		tab.add( new Samochod("Andrzej", new Punkt(0, 0)) );
 		tab.add( new Samochod("Janusz", new Punkt(0, 0)) );
 		
-		Collections.sort(tab, new Comparator<ObiektFizyczny>() {
-
-			@Override
-			public int compare(ObiektFizyczny a, ObiektFizyczny b) {
-				return a.getNazwa().toLowerCase()
-						.compareTo(b.getNazwa().toLowerCase());
-			}
-			
-		});
+		
+		
+		Collections.sort(tab);
 		
 		for(ObiektFizyczny o : tab){
 			System.out.println(o.getNazwa());
