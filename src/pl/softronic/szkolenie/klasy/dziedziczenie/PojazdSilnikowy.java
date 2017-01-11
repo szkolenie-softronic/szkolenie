@@ -11,6 +11,11 @@ public class PojazdSilnikowy extends Pojazd implements Przyspieszalny {
 		przyspieszenie = new Wektor(0, 0);
 	}
 	
+	public PojazdSilnikowy(String nazwa, Punkt pozycja, Wektor przyspieszenie) {
+		this(nazwa, pozycja);
+		this.przyspieszenie = przyspieszenie;
+	}
+	
 	@Override
 	public void krok(){
 		if(przyspieszenie!=null){

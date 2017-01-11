@@ -1,32 +1,39 @@
 package pl.softronic.szkolenie.klasy.dziedziczenie;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 import pl.softronic.szkolenie.klasy.geometria.Punkt;
 
 public class Main {
 
 	public static void main(String[] args) {
 
-		ObiektFizyczny[] tab = new ObiektFizyczny[3];
-		tab[0] = new Samochod("car", new Punkt(10, 23));
-		tab[1] = new Pojazd("zabawka", new Punkt(30, 12));
-		tab[2] = new PojazdSilnikowy("robot", new Punkt(15, 11));
+		List<ObiektFizyczny> tab = new ArrayList<>();
+		tab.add( new Samochod("car", new Punkt(0, 0)) );
+		tab.add( new PojazdSilnikowy("zabawka", new Punkt(0, 0)) );
+		tab.add( new PojazdSilnikowy("robot", new Punkt(0, 0)) );
+		tab.add( new Samochod("Maciek", new Punkt(0, 0)) );
+		tab.add( new Samochod("Halina", new Punkt(0, 0)) );
+		tab.add( new Samochod("Andrzej", new Punkt(0, 0)) );
+		tab.add( new Samochod("Janusz", new Punkt(0, 0)) );
 		
-		for(Object o : tab){
-			System.out.println("Obiekt klasy " + o.getClass().getSimpleName());
-			if(o instanceof Przyspieszalny){
-				System.out.println("   Jest przyspieszalny.");
-				
-				Przyspieszalny p = (Przyspieszalny)o;
-				p.przyspiesz(100);
-				
+		Collections.sort(tab, new Comparator<ObiektFizyczny>() {
+
+			@Override
+			public int compare(ObiektFizyczny a, ObiektFizyczny b) {
+				return a.getNazwa().toLowerCase()
+						.compareTo(b.getNazwa().toLowerCase());
 			}
-		}
+			
+		});
 		
-//		Przyspieszalny p = new Rakieta();
-//		p.przyspiesz(1);
-//		
-//		p = (Samochod)tab[0];
-//		p.przyspiesz(1);
+		for(ObiektFizyczny o : tab){
+			System.out.println(o.getNazwa());
+		}
+
 		
 		
 	}
