@@ -41,11 +41,17 @@ public abstract class ObiektFizyczny implements Comparable<ObiektFizyczny>{
 				+ "v:       " + predkosc + "\n";
 	}
 	
+//	@Override
+//	public int compareTo(ObiektFizyczny b){
+//		return (int)(getPozycja().getX()
+//	              -b.getPozycja().getX());
+//	}
+	
 	@Override
 	public int compareTo(ObiektFizyczny b){
-		System.out.print(".");
-		return getNazwa().toLowerCase()
-				.compareTo(b.getNazwa().toLowerCase());
+		Double pierwszy =   getPozycja().getX();
+		Double drugi    = b.getPozycja().getX();
+		return pierwszy.compareTo(drugi);
 	}
 	
 }

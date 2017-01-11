@@ -20,12 +20,17 @@ public class Main {
 		tab.add( new Samochod("Andrzej", new Punkt(2, 0), new Wektor(6, 0)) );
 		tab.add( new Samochod("Janusz", new Punkt(1, 0), new Wektor(7, 0)) );
 		
-		
+		for(ObiektFizyczny o : tab){
+			for(int t=0; t<10; t++){
+				o.krok();
+			}
+		}
 		
 		Collections.sort(tab);
 		
 		for(ObiektFizyczny o : tab){
-			System.out.println(o.getNazwa());
+			System.out.println(o.getPozycja().getX() +" "
+							      + o.getNazwa());
 		}
 
 		
