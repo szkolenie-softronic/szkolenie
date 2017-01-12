@@ -1,18 +1,26 @@
 package pl.softronic.szkolenie.klasy.pojemniki;
 
-import pl.softronic.szkolenie.klasy.dziedziczenie.Samochod;
-
 public class Main {
 
 	public static void main(String[] args) {
 		System.out.println("Start");
 
-		Samochod s = new Samochod("TIR", null);
+		String s = "Wonsz";
 		
-		Pojemny pojemnik = new Skrzynia();
+		Pojemny pojemnik = new Magazyn();
 		
 		pojemnik.wloz("Ala");
 		pojemnik.wloz(s);
+		pojemnik.wloz("Beczka");
+		pojemnik.wloz("Jajo");
+		pojemnik.wloz("Polewka");
+		pojemnik.wloz("Heheheszki");
+		pojemnik.wloz("Kamil");
+		pojemnik.wloz("Janusz");
+		pojemnik.wloz("Palec");
+		pojemnik.wloz("Pa³ac kultury");
+		pojemnik.wloz("Olej rzepakowy");
+		pojemnik.wloz("Olej ten przyk³ad");
 		
 		wypiszStanPojemnika(pojemnik);
 		
@@ -29,7 +37,7 @@ public class Main {
 		pojemnik.wypisz();
 	}
 
-	private static void wyjmowanie(Samochod s, Pojemny pojemnik) {
+	private static void wyjmowanie(Object s, Pojemny pojemnik) {
 		System.out.println("Wyjmowanie z pojemnika...");
 		Object obj = pojemnik.wyjmij(s);
 		if(obj == null){

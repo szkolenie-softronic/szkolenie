@@ -10,8 +10,14 @@ public abstract class Przechowalnia implements Pojemny {
 	public abstract String getNazwaTypuPrzechowalni();
 	
 	@Override
+	public void wloz(Object o) {
+		System.out.println("Do przechowalni "+ getNazwa() + " wk³adam " + o);
+		lista.add(o);
+	}
+	
+	@Override
 	public void oproznij() {
-		System.out.println("Opró¿nianie przechowalni typu " + getNazwaTypuPrzechowalni() + ".");
+		System.out.println("Opró¿nianie przechowalni " + getNazwa() + ".");
 		lista.clear();
 	}
 	
@@ -22,24 +28,27 @@ public abstract class Przechowalnia implements Pojemny {
 	
 	@Override
 	public void wypisz() {
-		System.out.println("Zawartoœæ przechowalni typu " + getNazwaTypuPrzechowalni() + ":");
+		System.out.println("Zawartoœæ przechowalni " + getNazwa() + ":");
 		for(int q = 0; q<lista.size(); q++){
 			Object qObj = lista.get(q);
-			System.out.printf("%7d: %s\n", q, qObj );
+			System.out.printf("%7d: %s\n", q+1, qObj );
 		}
 	}
 	
 	@Override
 	public Object wyjmij(Object o) {
 		if(lista.remove(o)){
-			System.out.println("Z przechowalni typu " + getNazwaTypuPrzechowalni() + " wyjêto element " + o);
+			System.out.println("Z przechowalni " + getNazwa() + " wyjêto element " + o);
 			return o;
 		} else {
-			System.out.println("Przechowalni typu " + getNazwaTypuPrzechowalni() + " nie zawiera elementu " + o);
+			System.out.println("Przechowalni " + getNazwa() + " nie zawiera elementu " + o);
 			return null;
 		}
 	}
 	
+	private String getNazwa(){
+		return "typu " + getNazwaTypuPrzechowalni();
+	}
 	
 	public List<Object> getLista(){
 		return lista;
