@@ -8,7 +8,11 @@ public abstract class ObiektFizyczny implements Comparable<ObiektFizyczny>{
 	private Wektor predkosc;
 	
 	public ObiektFizyczny(Punkt pozycja) {
-		this.pozycja = new Wektor(pozycja.getX(), pozycja.getY());
+		if(pozycja != null){
+			this.pozycja = new Wektor(pozycja.getX(), pozycja.getY());
+		} else {
+			this.pozycja = null;
+		}
 		predkosc = new Wektor(0, 0);
 	}
 

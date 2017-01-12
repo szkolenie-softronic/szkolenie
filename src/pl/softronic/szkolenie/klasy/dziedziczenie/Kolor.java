@@ -25,7 +25,7 @@ public enum Kolor {
 		String result = "#";
 		int[] t = new int[]{r , g , b};
 		for(int i : t){
-			if(i < 16){
+			if(i < 0x10){
 				result += "0";
 			}
 			result += Integer.toHexString(i);
