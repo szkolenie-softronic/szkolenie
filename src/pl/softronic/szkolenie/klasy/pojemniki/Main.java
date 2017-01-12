@@ -7,7 +7,7 @@ public class Main {
 
 		String s = "Wonsz";
 		
-		Pojemny pojemnik = new Magazyn();
+		Pojemny pojemnik = new Szafka(4);
 		
 		pojemnik.wloz("Ala");
 		pojemnik.wloz(s);
@@ -17,14 +17,12 @@ public class Main {
 		pojemnik.wloz("Heheheszki");
 		pojemnik.wloz("Kamil");
 		pojemnik.wloz("Janusz");
-		pojemnik.wloz("Palec");
-		pojemnik.wloz("Pa³ac kultury");
-		pojemnik.wloz("Olej rzepakowy");
-		pojemnik.wloz("Olej ten przyk³ad");
 		
 		wypiszStanPojemnika(pojemnik);
 		
 		wyjmowanie(s, pojemnik);
+		
+		wypiszStanPojemnika(pojemnik);
 		
 		oproznianie(pojemnik);
 		

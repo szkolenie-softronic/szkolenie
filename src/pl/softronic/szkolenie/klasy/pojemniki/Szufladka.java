@@ -29,8 +29,7 @@ public class Szufladka implements Pojemny {
 		if(zawartosc == null){
 			System.out.println("Szufladka jest pusta!");
 		} else {
-			System.out.println("Zawartoœæ szufladki:");
-			System.out.println(zawartosc);
+			System.out.println("Zawartoœæ szufladki:" + zawartosc);
 		}
 	}
 
