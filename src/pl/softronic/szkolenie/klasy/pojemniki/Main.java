@@ -9,7 +9,7 @@ public class Main {
 
 		Samochod s = new Samochod("TIR", null);
 		
-		Pojemny pojemnik = new Szufladka();
+		Pojemny pojemnik = new Skrzynia();
 		
 		pojemnik.wloz("Ala");
 		pojemnik.wloz(s);
