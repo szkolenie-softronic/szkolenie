@@ -57,7 +57,7 @@ public class Dane implements Serializable {
 		}
 		
 		public Builder withNazwisko(String nazwisko){
-			instance.setImie(nazwisko);
+			instance.setNazwisko(nazwisko);
 			return this;
 		}
 		
@@ -73,4 +73,13 @@ public class Dane implements Serializable {
 		
 		
 	}
+
+	@Override
+	public String toString() {
+		return "\timie=" + imie + "\n\tnazwisko=" + nazwisko 
+				+ "\n\twiek=" + wiek + "\n\tplec=" + plec.toString().toLowerCase();
+	}
+	
+	
+	
 }
