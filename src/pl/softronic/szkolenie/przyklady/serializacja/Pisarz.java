@@ -11,9 +11,10 @@ public class Pisarz {
 				.withWiek(22)
 				.withPlec(Dane.Plec.KOBIETA)
 				.get();
+		String dir = System.getenv("USERPROFILE");
 		
 		Files.writeObject(
-				"C:/Users/wojt3/Desktop/dane.dat", d);
+				dir+"/Desktop/dane.dat", d);
 
 	}
 
