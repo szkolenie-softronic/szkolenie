@@ -78,5 +78,13 @@ public class UserDAO {
 		}
 		return null;
 	}
+	
+	public static void addUser(User u){
+		db.add(u);
+	}
+	
+	public static void remUser(User u){
+		db.remove(u);
+	}
 
 }

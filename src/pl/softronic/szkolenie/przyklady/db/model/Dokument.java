@@ -1,10 +1,14 @@
 package pl.softronic.szkolenie.przyklady.db.model;
 
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Dokument implements Serializable, Comparable<Dokument> {
+public class Dokument implements Externalizable, Comparable<Dokument> {
 	private static final long serialVersionUID = 3603214016468395083L;
 	
 	final private static Object TYTUL = new Object();
@@ -45,6 +49,21 @@ public class Dokument implements Serializable, Comparable<Dokument> {
 			return 1;
 		}
 		return getTytul().toLowerCase().compareTo(o.getTytul().toLowerCase());
+	}
+	
+	@Override
+	public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+		User u = (User)in.readObject();
+		setAutor(u);
+		setTytul((String)in.readObject());
+		setTresc((String)in.readObject());
+	}
+	
+	@Override
+	public void writeExternal(ObjectOutput out) throws IOException {
+		out.writeObject(getAutor());
+		out.writeObject(getTytul());
+		out.writeObject(getTresc());
 	}
 	
 	
