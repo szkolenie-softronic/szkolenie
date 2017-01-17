@@ -35,6 +35,7 @@ public class PrzykladOkna extends JFrame {
 	public static void main(String[] args) throws InterruptedException {
 		JFrame frame = new PrzykladOkna();
 		DrawPanel draw = new DrawPanel();
+		WybierakPlci plecPanel;
 		
 		mainPanel.setLayout(new BorderLayout());
 		
@@ -47,23 +48,10 @@ public class PrzykladOkna extends JFrame {
 			{
 				formularzPanel.add(new JCheckBox("Wybierz mnie!"));
 				formularzPanel.add(new JTextField("tekst w œrodku"));
-				JPanel radioPanel = new JPanel();
-				{
-					radioPanel.setBorder(BorderFactory.createTitledBorder(
-							BorderFactory.createEtchedBorder(), "P³eæ"
-							));
-					radioPanel.setLayout(new BoxLayout(radioPanel, BoxLayout.Y_AXIS));
-					ButtonGroup group = new ButtonGroup();
-				    for(Plec plec : Plec.values()){
-						JRadioButton b = (JRadioButton) 
-								radioPanel.add(new JRadioButton(plec.name()));
-						group.add(b);
-						if(plec==Plec.NIE_WIEM){
-							b.setSelected(true);
-						}
-					}
-				}
-				formularzPanel.add(radioPanel);
+				
+				plecPanel = (WybierakPlci) 
+						formularzPanel.add(new WybierakPlci());
+				
 			}
 			centerPanel.add(formularzPanel, "Formularz");
 			centerPanel.add(draw, "Prostok¹t");
@@ -74,6 +62,11 @@ public class PrzykladOkna extends JFrame {
 		mainPanel.add(centerPanel, BorderLayout.CENTER);
 		
 		
+		plecPanel.addPlecChangeListener(jest->{
+			System.out.println("Plec zmienia siê na: " + jest);
+		});
+		
+		plecPanel.setWybranaPlec(Plec.CZESC_ROWEROWA);
 		
 		frame.setVisible(true);
 		int t = 0;
@@ -82,7 +75,7 @@ public class PrzykladOkna extends JFrame {
 			t = (t+1)%15;
 			draw.margin = t;
 			mainPanel.repaint();
-			//System.out.println(txt.getText());
+			//System.out.println(plecPanel.getWybranaPlec());
 		}
 	}
 
