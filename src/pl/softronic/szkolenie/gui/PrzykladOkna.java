@@ -1,16 +1,24 @@
 package pl.softronic.szkolenie.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
+import javax.swing.border.BevelBorder;
+
+import pl.softronic.szkolenie.przyklady.serializacja.Dane.Plec;
 
 public class PrzykladOkna extends JFrame {
 
@@ -33,11 +41,35 @@ public class PrzykladOkna extends JFrame {
 		mainPanel.add(new JLabel("Jakiœ napis na panelu okna"), BorderLayout.NORTH);
 		mainPanel.add(new JButton("Przycisk"), BorderLayout.WEST);
 		mainPanel.add(new JLabel("Inny napis"), BorderLayout.SOUTH);
-		JPanel centerPanel = new JPanel();
+		JTabbedPane centerPanel = new JTabbedPane();
 		{
-			JCheckBox cb = (JCheckBox) centerPanel.add(new JCheckBox("Wybierz mnie!"));
-			JTextField txt = (JTextField) centerPanel.add(new JTextField("tekst w œrodku"));
-			centerPanel.add(draw);
+			JPanel formularzPanel = new JPanel();
+			{
+				formularzPanel.add(new JCheckBox("Wybierz mnie!"));
+				formularzPanel.add(new JTextField("tekst w œrodku"));
+				JPanel radioPanel = new JPanel();
+				{
+					radioPanel.setBorder(BorderFactory.createTitledBorder(
+							BorderFactory.createEtchedBorder(), "P³eæ"
+							));
+					radioPanel.setLayout(new BoxLayout(radioPanel, BoxLayout.Y_AXIS));
+					ButtonGroup group = new ButtonGroup();
+				    for(Plec plec : Plec.values()){
+						JRadioButton b = (JRadioButton) 
+								radioPanel.add(new JRadioButton(plec.name()));
+						group.add(b);
+						if(plec==Plec.NIE_WIEM){
+							b.setSelected(true);
+						}
+					}
+				}
+				formularzPanel.add(radioPanel);
+			}
+			centerPanel.add(formularzPanel, "Formularz");
+			centerPanel.add(draw, "Prostok¹t");
+			centerPanel.add(new DrawZegar(), "Zegar");
+			centerPanel.setSelectedIndex(2);
+			
 		}
 		mainPanel.add(centerPanel, BorderLayout.CENTER);
 		
