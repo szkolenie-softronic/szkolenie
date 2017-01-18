@@ -21,6 +21,8 @@ import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JToolBar;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 import pl.softronic.szkolenie.gui.tedit.akcje.AkcjaKopiuj;
 import pl.softronic.szkolenie.gui.tedit.akcje.AkcjaOtworz;
@@ -116,7 +118,9 @@ public class TEditMain extends JFrame {
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
+		UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+		
 		mainFrame = new TEditMain();
 		mainFrame.setVisible(true);
 		

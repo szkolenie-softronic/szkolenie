@@ -29,33 +29,38 @@ public class AkcjaOtworz extends AbstractAction {
 		JFileChooser fc = new JFileChooser(new File("."));
 		int status = fc.showOpenDialog(TEditMain.mainFrame);
 		if(status == JFileChooser.APPROVE_OPTION){
-			try {
-				File f = fc.getSelectedFile();
-				TEditMain.otwartyPlik = f;
-				TEditMain.mainFrame.setTitle("TEdit "+f.getName());
-				
-				FileInputStream fis = new FileInputStream(f);
-				InputStreamReader irs = new InputStreamReader(fis);
-				BufferedReader br = new BufferedReader(irs);
-				List<String> lines = br.lines().collect(Collectors.toList());
-				StringBuilder stringBuilder = new StringBuilder();
-				for(String line : lines){
-					stringBuilder.append(line).append("\r\n");
-				}
-				TEditMain.textArea.setText(stringBuilder.toString());
-				TEditMain.statusDlugoscTekstu.setText("Odczytano z pliku tekst o d³ugoœci: "
-						+ stringBuilder.length());
-				
-				br.close();
-				irs.close();
-				fis.close();
-				
-				TEditMain.czyPlikJestAktualny = true;
-				
-			} catch (Exception e) {
-				JOptionPane.showMessageDialog(TEditMain.mainFrame, e.toString(), 
-						"B³¹d", JOptionPane.ERROR_MESSAGE);
+			File f = fc.getSelectedFile();
+			TEditMain.otwartyPlik = f;
+			otworz();
+		}
+	}
+
+	public static void otworz() {
+		try {
+			File f = TEditMain.otwartyPlik;
+			TEditMain.mainFrame.setTitle("TEdit "+f.getName());
+			
+			FileInputStream fis = new FileInputStream(f);
+			InputStreamReader irs = new InputStreamReader(fis);
+			BufferedReader br = new BufferedReader(irs);
+			List<String> lines = br.lines().collect(Collectors.toList());
+			StringBuilder stringBuilder = new StringBuilder();
+			for(String line : lines){
+				stringBuilder.append(line).append("\r\n");
 			}
+			TEditMain.textArea.setText(stringBuilder.toString());
+			TEditMain.statusDlugoscTekstu.setText("Odczytano z pliku tekst o d³ugoœci: "
+					+ stringBuilder.length());
+			
+			br.close();
+			irs.close();
+			fis.close();
+			
+			TEditMain.czyPlikJestAktualny = true;
+			
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(TEditMain.mainFrame, e.getStackTrace(), 
+					"B³¹d", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
