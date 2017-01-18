@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -20,6 +21,8 @@ import javax.swing.JTextArea;
 import javax.swing.JToolBar;
 
 import pl.softronic.szkolenie.gui.tedit.akcje.AkcjaOtworz;
+import pl.softronic.szkolenie.gui.tedit.akcje.AkcjaZapisz;
+import pl.softronic.szkolenie.gui.tedit.akcje.AkcjaZapiszJako;
 
 public class TEditMain extends JFrame {
 	
@@ -28,6 +31,7 @@ public class TEditMain extends JFrame {
 		public void actionPerformed(ActionEvent e) {}
 	}
 	public static JFrame mainFrame;
+	public static File otwartyPlik = null;
 	
 	static JPanel mainPanel = new JPanel(new BorderLayout());
 	public static JTextArea textArea = new JTextArea();
@@ -35,8 +39,8 @@ public class TEditMain extends JFrame {
 	static JMenuBar mainMenu = new JMenuBar();
 	
 	static Action akcjaOtworz = new AkcjaOtworz();
-	static Action akcjaZapisz = new ActionAdapter("Zapisz");
-	static Action akcjaZapiszJako = new ActionAdapter("Zapisz jako...");
+	static Action akcjaZapisz = new AkcjaZapisz();
+	static Action akcjaZapiszJako = new AkcjaZapiszJako();
 	static Action akcjaZamknij = new AbstractAction("Zamknij"){
 		public void actionPerformed(ActionEvent e) {
 			System.exit(0);

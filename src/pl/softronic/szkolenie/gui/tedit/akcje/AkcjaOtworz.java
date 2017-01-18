@@ -31,6 +31,7 @@ public class AkcjaOtworz extends AbstractAction {
 		if(status == JFileChooser.APPROVE_OPTION){
 			try {
 				File f = fc.getSelectedFile();
+				TEditMain.otwartyPlik = f;
 				
 				FileInputStream fis = new FileInputStream(f);
 				InputStreamReader irs = new InputStreamReader(fis);
@@ -43,6 +44,10 @@ public class AkcjaOtworz extends AbstractAction {
 				TEditMain.textArea.setText(stringBuilder.toString());
 				TEditMain.statusDlugoscTekstu.setText("Odczytano z pliku tekst o d³ugoœci: "
 						+ stringBuilder.length());
+				
+				br.close();
+				irs.close();
+				fis.close();
 				
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(TEditMain.mainFrame, e.toString(), 
