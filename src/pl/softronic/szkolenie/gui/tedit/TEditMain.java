@@ -5,11 +5,6 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyVetoException;
-import java.beans.VetoableChangeListener;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -23,10 +18,8 @@ import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JToolBar;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
-import pl.softronic.szkolenie.gui.DrawZegar;
+import pl.softronic.szkolenie.gui.tedit.akcje.AkcjaOtworz;
 
 public class TEditMain extends JFrame {
 	
@@ -34,12 +27,14 @@ public class TEditMain extends JFrame {
 		public ActionAdapter(String s){super(s);};
 		public void actionPerformed(ActionEvent e) {}
 	}
+	public static JFrame mainFrame;
 	
 	static JPanel mainPanel = new JPanel(new BorderLayout());
-	static JTextArea textArea = new JTextArea();
-	static JLabel statusDlugoscTekstu = new JLabel("Znaków: 0");
+	public static JTextArea textArea = new JTextArea();
+	public static JLabel statusDlugoscTekstu = new JLabel("Znaków: 0");
 	static JMenuBar mainMenu = new JMenuBar();
-	static Action akcjaOtworz = new ActionAdapter("Otwórz");
+	
+	static Action akcjaOtworz = new AkcjaOtworz();
 	static Action akcjaZapisz = new ActionAdapter("Zapisz");
 	static Action akcjaZapiszJako = new ActionAdapter("Zapisz jako...");
 	static Action akcjaZamknij = new AbstractAction("Zamknij"){
@@ -111,7 +106,8 @@ public class TEditMain extends JFrame {
 
 	public static void main(String[] args) {
 		//System.out.println("Start");
-		new TEditMain().setVisible(true);
+		mainFrame = new TEditMain();
+		mainFrame.setVisible(true);
 		
 		textArea.addKeyListener(new KeyAdapter() {
 			@Override public void keyReleased(KeyEvent e) {
@@ -120,8 +116,6 @@ public class TEditMain extends JFrame {
 			}
 		});
 
-		
-		
 	}
 
 }
