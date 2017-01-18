@@ -4,6 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -16,6 +20,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.BevelBorder;
 
 import pl.softronic.szkolenie.przyklady.serializacja.Dane.Plec;
@@ -32,15 +38,19 @@ public class PrzykladOkna extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws Exception {
+		
+		UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+		
 		JFrame frame = new PrzykladOkna();
 		DrawPanel draw = new DrawPanel();
 		WybierakPlci plecPanel;
 		
 		mainPanel.setLayout(new BorderLayout());
 		
-		mainPanel.add(new JLabel("Jakiœ napis na panelu okna"), BorderLayout.NORTH);
-		mainPanel.add(new JButton("Przycisk"), BorderLayout.WEST);
+		mainPanel.add(new JLabel("<html>Jakiœ <br/>napis na panelu okna"), BorderLayout.NORTH);
+		JButton przycisk = new JButton("<html><b><u>T</u>wo</b><br><font size=20 color=#ffaa00>lines</html>");
+		mainPanel.add(przycisk, BorderLayout.WEST);
 		mainPanel.add(new JLabel("Inny napis"), BorderLayout.SOUTH);
 		JTabbedPane centerPanel = new JTabbedPane();
 		{
@@ -67,6 +77,20 @@ public class PrzykladOkna extends JFrame {
 		});
 		
 		plecPanel.setWybranaPlec(Plec.CZESC_ROWEROWA);
+		
+		przycisk.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				System.out.println("Klik:\n   iloœæ: "+e.getClickCount());
+				System.out.println("x,y = " + e.getX() +", "+e.getY());
+				System.out.println("Przycisk: " + e.getButton());
+				System.out.println("Modif: " + e.getModifiers());
+			}
+		});
+		
+		przycisk.addMouseMotionListener(new MouseMotionListener() {
+			public void mouseMoved(MouseEvent arg0) {}
+			public void mouseDragged(MouseEvent arg0) {}
+		});
 		
 		frame.setVisible(true);
 		int t = 0;
