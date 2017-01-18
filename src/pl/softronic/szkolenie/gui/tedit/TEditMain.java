@@ -5,6 +5,9 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.File;
 
 import javax.swing.AbstractAction;
@@ -19,6 +22,7 @@ import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JToolBar;
+import javax.swing.KeyStroke;
 
 import pl.softronic.szkolenie.gui.tedit.akcje.AkcjaOtworz;
 import pl.softronic.szkolenie.gui.tedit.akcje.AkcjaZapisz;
@@ -43,7 +47,8 @@ public class TEditMain extends JFrame {
 	static Action akcjaZapiszJako = new AkcjaZapiszJako();
 	static Action akcjaZamknij = new AbstractAction("Zamknij"){
 		public void actionPerformed(ActionEvent e) {
-			System.exit(0);
+			mainFrame.dispatchEvent( // http://stackoverflow.com/a/1235994/4366471
+					new WindowEvent(mainFrame, WindowEvent.WINDOW_CLOSING));
 		}
 	};
 	static Action akcjaKopiuj = new ActionAdapter("Kopiuj");
@@ -105,7 +110,8 @@ public class TEditMain extends JFrame {
 				statusBar.add(statusDlugoscTekstu);
 			}
 		}
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 	}
 
 	public static void main(String[] args) {
@@ -117,6 +123,16 @@ public class TEditMain extends JFrame {
 			@Override public void keyReleased(KeyEvent e) {
 				JTextArea zrodlo = (JTextArea)e.getSource();
 				statusDlugoscTekstu.setText("Znaków: "+zrodlo.getText().length());
+			}
+		});
+		
+		mainFrame.addWindowListener(new WindowAdapter() {
+			@Override public void windowClosing(WindowEvent e) {
+				int opcja = JOptionPane.showConfirmDialog(mainFrame, "Czy napewno?", 
+						"Zamykanie", JOptionPane.YES_NO_OPTION);
+				if(opcja == JOptionPane.YES_OPTION){
+					mainFrame.dispose();
+				}
 			}
 		});
 
