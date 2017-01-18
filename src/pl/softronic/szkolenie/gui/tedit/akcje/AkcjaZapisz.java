@@ -36,6 +36,7 @@ public class AkcjaZapisz extends AbstractAction {
 			
 			try {
 				File f = TEditMain.otwartyPlik;
+				TEditMain.mainFrame.setTitle("TEdit "+f.getName());
 				
 				FileOutputStream fos = new FileOutputStream(f);
 				OutputStreamWriter osw = new OutputStreamWriter(fos);
@@ -44,6 +45,8 @@ public class AkcjaZapisz extends AbstractAction {
 				osw.flush();
 				osw.close();
 				fos.close();
+				
+				TEditMain.czyPlikJestAktualny = true;
 				
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(TEditMain.mainFrame, e.toString(), 

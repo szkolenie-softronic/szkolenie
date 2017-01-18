@@ -7,7 +7,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.io.File;
 
 import javax.swing.AbstractAction;
@@ -22,9 +21,11 @@ import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JToolBar;
-import javax.swing.KeyStroke;
 
+import pl.softronic.szkolenie.gui.tedit.akcje.AkcjaKopiuj;
 import pl.softronic.szkolenie.gui.tedit.akcje.AkcjaOtworz;
+import pl.softronic.szkolenie.gui.tedit.akcje.AkcjaWklej;
+import pl.softronic.szkolenie.gui.tedit.akcje.AkcjaWytnij;
 import pl.softronic.szkolenie.gui.tedit.akcje.AkcjaZapisz;
 import pl.softronic.szkolenie.gui.tedit.akcje.AkcjaZapiszJako;
 
@@ -36,6 +37,7 @@ public class TEditMain extends JFrame {
 	}
 	public static JFrame mainFrame;
 	public static File otwartyPlik = null;
+	public static boolean czyPlikJestAktualny = true; 
 	
 	static JPanel mainPanel = new JPanel(new BorderLayout());
 	public static JTextArea textArea = new JTextArea();
@@ -51,12 +53,12 @@ public class TEditMain extends JFrame {
 					new WindowEvent(mainFrame, WindowEvent.WINDOW_CLOSING));
 		}
 	};
-	static Action akcjaKopiuj = new ActionAdapter("Kopiuj");
-	static Action akcjaWytnij = new ActionAdapter("Wytnij");
-	static Action akcjaWklej = new ActionAdapter("Wklej");
+	static Action akcjaKopiuj = new AkcjaKopiuj();
+	static Action akcjaWytnij = new AkcjaWytnij();
+	static Action akcjaWklej = new AkcjaWklej();
 	
 	public TEditMain(){
-		setTitle("Przyk³adowe okno Swing");
+		setTitle("Edytor tekstu TEdit");
 		setSize(800, 600);
 		setLocationRelativeTo(null);
 		setJMenuBar(mainMenu);
@@ -115,7 +117,6 @@ public class TEditMain extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		//System.out.println("Start");
 		mainFrame = new TEditMain();
 		mainFrame.setVisible(true);
 		
@@ -123,16 +124,27 @@ public class TEditMain extends JFrame {
 			@Override public void keyReleased(KeyEvent e) {
 				JTextArea zrodlo = (JTextArea)e.getSource();
 				statusDlugoscTekstu.setText("Znaków: "+zrodlo.getText().length());
+				czyPlikJestAktualny = false;
 			}
 		});
 		
 		mainFrame.addWindowListener(new WindowAdapter() {
 			@Override public void windowClosing(WindowEvent e) {
-				int opcja = JOptionPane.showConfirmDialog(mainFrame, "Czy napewno?", 
-						"Zamykanie", JOptionPane.YES_NO_OPTION);
-				if(opcja == JOptionPane.YES_OPTION){
+				if(!czyPlikJestAktualny){
+					int opcja = JOptionPane.showConfirmDialog(mainFrame, "Czy zapisaæ zmiany?", 
+							"Zamykanie", JOptionPane.YES_NO_CANCEL_OPTION);
+					if(opcja == JOptionPane.YES_OPTION){
+						akcjaZapisz.actionPerformed(null);
+					}
+					if(opcja == JOptionPane.NO_OPTION){
+						mainFrame.dispose();
+					}
+				} else {
 					mainFrame.dispose();
 				}
+			}
+			@Override public void windowOpened( WindowEvent e){ 
+				textArea.requestFocus();
 			}
 		});
 

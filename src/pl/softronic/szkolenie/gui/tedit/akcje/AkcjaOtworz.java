@@ -32,6 +32,7 @@ public class AkcjaOtworz extends AbstractAction {
 			try {
 				File f = fc.getSelectedFile();
 				TEditMain.otwartyPlik = f;
+				TEditMain.mainFrame.setTitle("TEdit "+f.getName());
 				
 				FileInputStream fis = new FileInputStream(f);
 				InputStreamReader irs = new InputStreamReader(fis);
@@ -48,6 +49,8 @@ public class AkcjaOtworz extends AbstractAction {
 				br.close();
 				irs.close();
 				fis.close();
+				
+				TEditMain.czyPlikJestAktualny = true;
 				
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(TEditMain.mainFrame, e.toString(), 
