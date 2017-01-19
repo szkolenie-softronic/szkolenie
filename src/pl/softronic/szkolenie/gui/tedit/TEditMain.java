@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import java.util.List;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -120,7 +121,7 @@ public class TEditMain extends JFrame {
 
 	public static void main(String[] args) throws Exception {
 		UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-		
+
 		mainFrame = new TEditMain();
 		mainFrame.setVisible(true);
 		
